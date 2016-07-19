@@ -8,7 +8,7 @@ build_script:
   - cmd: cd src\DevZH.LibUI.Package
   - cmd: dotnet restore
   - cmd: dotnet copy-runtimes -p DevZH.LibUI.Internal
-  - cmd: dotnet pack -c Release -o -o ../../artifacts
+  - ps: dotnet pack -c Release -o ../../artifacts --version-suffix build-$(([DateTimeOffset]::Parse($env:APPVEYOR_REPO_COMMIT_TIMESTAMP)).ToUnixTimeSeconds())
 
 artifacts:
   - path: artifacts/*.nupkg
