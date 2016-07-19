@@ -1,13 +1,64 @@
 ﻿{
   "version": "1.0.0-*",
+  "description": "Simple and portable (but not inflexible) GUI library in C that uses the native GUI technologies of each platform it supports.",
+
+  "authors": [
+    "andlabs"
+  ],
+
+  "name": "DevZH.LibUI",
+
+  "packOptions": {
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/noliar/DevZH.LibUI.Package"
+    },
+    "licenseUrl": "https://raw.githubusercontent.com/noliar/DevZH.LibUI.Package/master/content/License.txt",
+    "tags": [
+      "libui"
+    ],
+    "files": {
+      "mappings": {
+        "/": "../../content/License.txt",
+        "runtimes/win7-x64/native/": "runtimes/win7-x64/native/*",
+        "runtimes/win7-x86/native/": "runtimes/win7-x86/native/*",
+        "runtimes/win7-arm/native/": "runtimes/win7-arm/native/*",
+        "runtimes/osx-x64/native/": "runtimes/osx-x64/native/*",
+        "runtimes/rhel-x64/native/": "runtimes/rhel-x64/native/*",
+        "runtimes/debian-x64/native/": "runtimes/debian-x64/native/*",
+        "runtimes/opensuse-x64/native/": "runtimes/opensuse-x64/native/*",
+        "runtimes/fedora-x64/native/": "runtimes/fedora-x64/native/*"
+      }
+    }
+  },
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0"
+    "Microsoft.NETCore.Platforms": "1.0.1",
+
+    "DevZH.LibUI.Internal-Darwin": {
+      "version": "1.0.0-*",
+      "type": "build"
+    },
+    "DevZH.LibUI.Internal-Linux": {
+      "version": "1.0.0-*",
+      "type": "build"
+    },
+    "DevZH.LibUI.Internal-Windows": {
+      "version": "1.0.0-*",
+      "type": "build"
+    }
+  },
+
+  "tools": {
+    "DevZH.RuntimesInternalCopier": "1.0.0"
   },
 
   "frameworks": {
-    "netstandard1.6": {
-      "imports": "dnxcore50"
-    }
+    "netstandard1.0": {}
+  } /*,
+  postrestore is not supported yet. You should run the command in cmd or bash etc.
+  "scripts": {
+    "postrestore": "dotnet copy-runtimes -p DevZH.LibUI.Internal"
   }
+  */
 }

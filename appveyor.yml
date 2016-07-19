@@ -1,0 +1,15 @@
+os: Visual Studio 2015
+version: Build {build}
+
+build_script:
+  # dotnet info
+  - cmd: dotnet --info
+  # Run dotnet test 
+  - cmd: cd src\DevZH.LibUI.Package
+  - cmd: dotnet restore
+  - cmd: dotnet copy-runtimes -p DevZH.LibUI.Internal
+  - cmd: dotnet pack -c Release -o -o ../../artifacts
+
+artifacts:
+  - path: artifacts/*.nupkg
+    name: libui build package
