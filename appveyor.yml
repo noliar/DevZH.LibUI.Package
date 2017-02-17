@@ -12,3 +12,11 @@ build_script:
 artifacts:
   - path: artifacts/*.nupkg
     name: libui build package
+
+deploy:
+- provider: NuGet
+  server: https://www.myget.org/F/devzh/
+  api_key:
+    secure: rZ7DEc0Com5ZMUI/4asIgqUpfXn3TgoktxT7ZzyqXaBd57XymoLtpPLyLHswtfZK
+  skip_symbols: true
+  artifact: /.*\.nupkg/
